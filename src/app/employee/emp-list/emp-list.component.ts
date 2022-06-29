@@ -38,7 +38,10 @@ export class EmpListComponent implements OnInit, OnChanges {
   addClick = () => {
     this.emp = {
       EmployeeId: 0,
-      EmployeeName: ''
+      EmployeeName: '',
+      Department: '',
+      DateOfJoin: '',
+      PhotoFileName: 'anonymous.png'
     }
     this.Modaltitle = '新增員工';
     this.ActiveEmployee = true;

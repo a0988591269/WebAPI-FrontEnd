@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class SharedService {
   //建構值
   readonly APIUrl = 'https://localhost:44300/api';
-  readonly PhotoUrl = 'https://localhost:44300/Photos'
+  readonly PhotoUrl = 'https://localhost:44300/Photos/'
 
   constructor(private http: HttpClient) { }
 
@@ -55,7 +55,7 @@ export class SharedService {
   }
 
   getAllDepartment = (): Observable<any> => {
-    return this.http.get<any>(this.APIUrl + 'Employee/GetAllDepartment');
+    return this.http.get<any>(this.APIUrl + '/Employee/GetAllDepartment');
   }
 
 }
