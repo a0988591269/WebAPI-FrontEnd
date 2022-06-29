@@ -1,0 +1,26 @@
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">部門名稱</label>
+  <div class="col-sm-10">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="DepartmentName"
+      placeholder="請輸入部門名稱"
+    />
+  </div>
+</div>
+
+<button
+  (click)="addDepartment()"
+  *ngIf="dep.DepartmentId == 0"
+  class="btn btn-primary"
+>
+  新增
+</button>
+<button
+  (click)="editDepartment()"
+  *ngIf="dep.DepartmentId != 0"
+  class="btn btn-primary"
+>
+  編輯
+</button>
