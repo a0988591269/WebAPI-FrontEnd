@@ -1,0 +1,5 @@
+<!-- loader.component.html -->
+
+<ng-container *ngIf="loading$ | async">
+  <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
+</ng-container>

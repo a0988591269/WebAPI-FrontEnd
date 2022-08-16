@@ -13,9 +13,14 @@ import { EmpFormComponent } from './employee/emp-form/emp-form.component';
 //新增Service元件
 import { SharedService } from './shared.service';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 //Form表單
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoaderSpinnerComponent } from './shared/loader-spinner/loader-spinner.component';
+import { LoaderSpinnerInterceptor } from './shared/loader-spinner/loader-spinner.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -25,16 +30,26 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EmployeeComponent,
     EmpListComponent,
     EmpFormComponent,
-    DepFormComponent
+    DepFormComponent,
+    LoaderSpinnerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
   ],
-  providers: [SharedService],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderSpinnerInterceptor,
+      multi: true,
+    },
+    SharedService,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
